@@ -6,9 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import reducer from './reducers'
+import middleware from './middleWare'
 
 
-const store = createStore (reducer)
+const store = createStore (reducer,middleware)
 
 
 ReactDOM.render(
