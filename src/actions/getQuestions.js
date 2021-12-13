@@ -1,9 +1,9 @@
-export const GET_QUESTION ='get_question'
+export const GET_QUESTIONS ='get_questions'
 
 
 function getQuestions(questions){
     return{
-        type:GET_QUESTION,
+        type:GET_QUESTIONS,
         questions
     }
 }
