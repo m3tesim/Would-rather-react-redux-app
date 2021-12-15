@@ -3,14 +3,20 @@ import { connect } from "react-redux";
 import Poll from "./poll";
 export class Dashboard extends Component {
   render() {
+const {authed,questionsIDS,authors}= this.props
+console.log("this is "+authed)
+
+    //const {author}= this.props.questionsIDS.author
     return (
       <div className="container">
         <ul>
-
-            {this.props.questionsIDS.map((qID)=>(
-                <li key={qID}> <Poll id={qID} /></li>
-            ))}
             
+          {
+            questionsIDS.map((qID) => (
+              <li key={qID}>
+              <Poll id={qID} />
+              </li>
+            ))}
         </ul>
       </div>
     );
@@ -19,9 +25,13 @@ export class Dashboard extends Component {
 
 export default connect(mapStateToProps)(Dashboard);
 
-function mapStateToProps({ getQuestions }) {
+function mapStateToProps({ getQuestions, authed }) {
   return {
-    questionsIDS: Object.keys(getQuestions)
-    .sort((a,b) => getQuestions[b].timestamp - getQuestions[a].timestamp)
+    authed,
+    authors:Object.values(getQuestions).map(value=>value.author),
+
+    questionsIDS: Object.keys(getQuestions).sort(
+      (a, b) => getQuestions[b].timestamp - getQuestions[a].timestamp
+    ),
   };
 }
