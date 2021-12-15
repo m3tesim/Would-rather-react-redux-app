@@ -1,7 +1,7 @@
 export const GET_USERS ='get_users'
 
 
-function getUsers(users){
+function users(users){
     return{
         type:GET_USERS,
         users
@@ -10,4 +10,4 @@ function getUsers(users){
 
 
 
-export default getUsers;
+export default users;
