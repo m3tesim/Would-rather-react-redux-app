@@ -28,10 +28,9 @@ showUnAnswered=()=>{
   
 
   render() {
-    const {questionsIDS,getUsers,authed}= this.props
+    const {questionsIDS,user}= this.props
 
 
-    const user = getUsers[authed];
     const answeredIds = user ? Object.keys(user['answers']) : [];
 
     function getUnanswered(questionIds, answeredIds) {
@@ -44,12 +43,13 @@ showUnAnswered=()=>{
 
 
 
-   console.log("looook "+JSON.stringify(unansweredIds))
 
     return (
         <div className="header">
-          <button  onClick={this.showAnswered} className="head">UnAnswered</button>
-          <button  onClick={this.showUnAnswered} className="head">Answered</button>
+
+
+          <button  onClick={this.showAnswered} className="head btn ">UnAnswered</button>
+          <button  onClick={this.showUnAnswered} className="head btn">Answered</button>
           {this.state.value===true? 
           <ListQuestions questionsIDS={unansweredIds} />:<ListQuestions questionsIDS={answeredIds} />}
          
@@ -63,11 +63,12 @@ export default connect(mapStateToProps)(Dashboard);
 
 
 function mapStateToProps({ getQuestions, authed ,getUsers }) {
-  
+  const user = getUsers[authed];
+
 
     return {
       authed,
-      getUsers,
+      user,
 
   
       questionsIDS: Object.keys(getQuestions).sort(

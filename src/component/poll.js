@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../_DATA";
+import { Link } from 'react-router-dom';
 
 export class Poll extends Component {
+
+
   render() {
-    const { question, authed, user } = this.props;
+    const { question, authed, user , id } = this.props;
 
     const { author, optionOne } = question;
     const { avatarURL, name } = user;
@@ -21,7 +24,7 @@ export class Poll extends Component {
             <label>{optionOne.text},,,</label>
             <br />
             <br />
-            <button>View poll </button>
+            <Link className="btn"   to={`/Question/${id}`} > View poll </Link>
           </form>
           <br></br>
         </div>

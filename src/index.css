@@ -58,21 +58,18 @@ a {
   font-weight: bold;
 }
 
-.nav ul {
+.nav-bar{
+  display: flex;
+  justify-content: center;
+}
+.nav-bar ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
 }
 
-.nav li:first-child {
-  padding-left: 0;
-}
 
-ul {
-  padding-left: 0;
-
-}
 
 li {
   list-style-type: none;
@@ -84,6 +81,11 @@ li {
   height: 150px;
   border-radius: 25px;
   margin: 10px;
+}
+
+.nav-img {
+  height: 20px;
+  border-radius: 25px;
 }
 
 .question {
@@ -125,10 +127,12 @@ li {
   display: flex;
   align-items: center;
 }
-.tweet-icons > span {
+.user-avatar {
   color: #969696;
   margin: 0 15px 0 5px;
-  font-size: 18px !important;
+  font-size: 15px !important;
+  display: flex;
+  align-items: flex-end;
 }
 .tweet-icon {
   font-size: 27px;
@@ -164,3 +168,7 @@ li {
   font-size: 20px;
   color: #C3392A;
 }
+
+
+
+
