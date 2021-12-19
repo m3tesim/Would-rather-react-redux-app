@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Navbar from "./nav"
 import Question from "./question.js"
+import NewQuestion from "./newQuestion";
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,8 @@ class App extends Component {
                    <Routes>
                   <Route exact path='/home' element={<Dashboard/>} />
                   <Route path='/Question/:id' element={<Question  />} />
+                  <Route exact path='/newquestion' element={<NewQuestion/>} />
+
                 </Routes>
       </div>
     );

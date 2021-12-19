@@ -7,7 +7,6 @@ import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import reducer from './reducers'
 import middleware from './middleWare'
-import 'semantic-ui-css/semantic.min.css'
 import { BrowserRouter } from 'react-router-dom'
 
 
