@@ -1,7 +1,7 @@
 import { _saveQuestion } from "../_DATA";
+import { addQuestionToUser } from "./getUsers";
+
 export const ADD_Q = "add_q";
-
-
 function addQuestion(question) {
   return {
     type: ADD_Q,
@@ -9,16 +9,17 @@ function addQuestion(question) {
   };
 }
 
-export default addQuestion;
-
 export function handleAddQ(optionOneText, optionTwoText) {
   return (dispatch, getsate) => {
     const { authed } = getsate();
+    return _saveQuestion({
+      author: authed,
+      optionOneText,
+      optionTwoText,
+    }).then((question) => {
+      dispatch(addQuestion(question));
+      dispatch(addQuestionToUser(question));
 
-    return _saveQuestion({ author: authed, optionOneText, optionTwoText }).then((question)=>
-    {
-        dispatch(addQuestion(question));
-    })
+    });
   };
 }
-

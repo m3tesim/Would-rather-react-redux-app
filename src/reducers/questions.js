@@ -9,6 +9,13 @@ export function getQuestions(state = {}, action) {
         ...action.questions,
       };
 
+      case ADD_Q:
+  
+        return {
+          ...state,
+          [action.question.id]: action.question
+        };
+
     default:
       return state;
   }
@@ -16,14 +23,4 @@ export function getQuestions(state = {}, action) {
 
 
 
-export function addQ(state = {}, action) {
-    switch (action.type) {
-      case ADD_Q:
-        return {
-          ...state,
-          [action.question.id]: action.question
-        };
-  
-      default:
-        return state;
-    }}
+
