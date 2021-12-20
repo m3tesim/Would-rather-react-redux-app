@@ -1,32 +1,32 @@
-import { _saveQuestionAnswer } from '../_DATA'
+import { _saveQuestionAnswer } from "../_DATA";
 
-export const ANSWER_Q="answer_q"
+export const ANSWER_Q = "answer_q";
+export const USER_ANSWER="user_answer"
 
+function Answer({ authed, qid, answer }) {
+  return {
+    type: ANSWER_Q,
 
-export function Answer({qid,authed , answer}) {
+    authed,
+    qid,
+    answer,
+  };
+}
 
-    return{
- type: ANSWER_Q,
- qid, 
- authed,
- answer
-    
-}}
+function userAnswer(authed, qid, answer) {
+    return {
+      type: USER_ANSWER,
+      authed,
+      qid,
+      answer
+    };
+  }
 
+export function handleAnswer(info) {
+  return (dispatch) => {
+    dispatch(Answer(info));
+    dispatch(userAnswer(info))
+    return _saveQuestionAnswer(info)
+  };
+}
 
-
-
-
-export function handleAnswer (qid,answer){
-    return (dispatch,getState)=>{
-        const {authed}=getState()
-
-        return _saveQuestionAnswer({
-            authed,
-            qid,
-            answer
-        }).then(() => {
-            dispatch(answer({authed, qid, answer}))  ;
-        })
-        
-    }}

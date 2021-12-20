@@ -1,12 +1,37 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../_DATA";
-
-import { useParams } from "react-router-dom";
+import { handleAnswer } from "../actions/answerQuestion";
+import { useParams, useRoutes } from "react-router-dom";
 
 export class Question extends Component {
+
+state={
+  selectedOption:""
+
+}
+  onValueChange=(event)=> {
+    this.setState(()=>({
+      selectedOption: event.target.value
+    }));
+  }
+
+  submitAnswer=(event)=> {
+    event.preventDefault();
+    const {dispatch,question, authed}= this.props
+    dispatch(handleAnswer({
+      
+      authed,
+      qid:question.id,
+      answer:this.state.selectedOption
+    }))
+
+  }
+
+
+
   render() {
-    const { question, authed ,user} = this.props;
+    const { question ,user} = this.props;
     const { author, optionOne, optionTwo } = question;
     const { avatarURL, name } = user;
 
@@ -17,15 +42,17 @@ export class Question extends Component {
         <div className="question-info">
           by {author}
 
-          <form>
+          <form  onSubmit={this.submitAnswer}>
           <header>
-              <h4> Would you rather </h4>{" "}
+              <h4> Would you rather </h4>
             </header>
-            <input type="radio" name="answer" value={optionOne.text} /> {" "}
-            <label for="html">{optionOne.text}</label>
+            <input type="radio" name="answer" value="optionOne" 
+            onChange={this.onValueChange}/> 
+            <label >{optionOne.text}</label>
             <br />
-            <input type="radio" name="answer" value={optionTwo.text} /> {" "}
-            <label for="html">{optionTwo.text}</label>
+            <input type="radio" name="answer" value="optionTwo"
+            onChange={this.onValueChange}/> 
+            <label >{optionTwo.text}</label>
             <br />
             <button className="btn"> submit  </button>
           </form>
