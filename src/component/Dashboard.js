@@ -1,78 +1,69 @@
-import { Component ,React} from "react";
+import { Component, React } from "react";
 import ListQuestions from "./listQuestions";
 import { connect } from "react-redux";
+import { Navbar } from "./nav";
 
 class Dashboard extends Component {
-  
-    
   state = {
     value: true,
   };
-  
 
-
-  showAnswered=()=>{
+  showAnswered = () => {
     this.setState({
-      value:true
-    })
-    }
-showUnAnswered=()=>{
-  this.setState({
-    value:false
-  })
-
-  
-}
-
-
-  
+      value: true,
+    });
+  };
+  showUnAnswered = () => {
+    this.setState({
+      value: false,
+    });
+  };
 
   render() {
-    const {questionsIDS,user}= this.props
+    const { questionsIDS, user } = this.props;
 
-
-    const answeredIds = user ? Object.keys(user['answers']) : [];
+    const answeredIds = user ? Object.keys(user["answers"]) : [];
 
     function getUnanswered(questionIds, answeredIds) {
-      return questionIds
-        .filter(questionId => !(answeredIds.includes(questionId)));
+      return questionIds.filter(
+        (questionId) => !answeredIds.includes(questionId)
+      );
     }
 
-     const unansweredIds = user ? getUnanswered(questionsIDS, answeredIds) : [];
-
-
-
-
+    const unansweredIds = user ? getUnanswered(questionsIDS, answeredIds) : [];
 
     return (
+      <div>
+        <Navbar />
         <div className="header">
-
-
-          <button  onClick={this.showAnswered} className="head btn ">UnAnswered</button>
-          <button  onClick={this.showUnAnswered} className="head btn">Answered</button>
-          {this.state.value===true? 
-          <ListQuestions questionsIDS={unansweredIds} />:<ListQuestions questionsIDS={answeredIds} />}
-         
+          <button onClick={this.showAnswered} className="head btn ">
+            UnAnswered
+          </button>
+          <button onClick={this.showUnAnswered} className="head btn">
+            Answered
+          </button>
+          {this.state.value === true ? (
+            <ListQuestions questionsIDS={unansweredIds} />
+          ) : (
+            <ListQuestions questionsIDS={answeredIds} />
+          )}
         </div>
+      </div>
     );
   }
 }
 
 export default connect(mapStateToProps)(Dashboard);
 
-
-
-function mapStateToProps({ getQuestions, authed ,getUsers }) {
+function mapStateToProps({ getQuestions, authed, getUsers }) {
   const user = getUsers[authed];
 
+  return {
+    authed,
+    user,
 
-    return {
-      authed,
-      user,
-
-  
-      questionsIDS: Object.keys(getQuestions).sort(
-        (a, b) => getQuestions[b].timestamp - getQuestions[a].timestamp
-      ),
-    };
-  }
+    questionsIDS: Object.keys(getQuestions).sort(
+      (a, b) => getQuestions[b].timestamp - getQuestions[a].timestamp
+    ),
+  };
+}

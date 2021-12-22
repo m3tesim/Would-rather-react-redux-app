@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../_DATA";
 import { handleAnswer } from "../actions/answerQuestion";
-import { useParams, useRoutes } from "react-router-dom";
+import { Navbar } from "./nav";
 
 export class Question extends Component {
 
@@ -36,6 +36,10 @@ state={
     const { avatarURL, name } = user;
 
     return (
+      
+      <div>
+
+      <Navbar/>
       <div className="question">
       <img className="avatar" src={avatarURL} alt={`avatar of ${name}`} />
 
@@ -59,13 +63,15 @@ state={
           <br></br>
         </div>
       </div>
+      </div>
     );
   }
 }
 
-const MapStateToProps = ({ authed, getQuestions ,getUsers}) => {
-  const params = useParams();
-  const question = getQuestions[params.id];
+const MapStateToProps = ({ authed, getQuestions ,getUsers},props) => {
+  const { id } = props.match.params;
+
+  const question = getQuestions[id];
   const author = question.author;
   const optionOneText = question.optionOne.text;
   const optionTwoText = question.optionTwo.text;

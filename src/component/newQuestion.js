@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddQ } from "../actions/addQuestion";
-
+import { Navbar } from "./nav";
 export class NewQuestion extends Component {
   state = {
     optionOne: "",
@@ -48,6 +48,10 @@ export class NewQuestion extends Component {
 
 
     return (
+      
+      <div>
+
+      <Navbar/>
       <div className="question ">
         <form onSubmit={this.handleSubmit} className="question-info ">
           <span>
@@ -81,6 +85,7 @@ export class NewQuestion extends Component {
             Submit
           </button>
         </form>
+      </div>
       </div>
     );
   }
