@@ -2,7 +2,7 @@ import { Component, React } from "react";
 import ListQuestions from "./listQuestions";
 import { connect } from "react-redux";
 import { Navbar } from "./nav";
-
+import LoginRedirect from "./loginRedirect";
 class Dashboard extends Component {
   state = {
     value: true,
@@ -20,7 +20,9 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { questionsIDS, user } = this.props;
+  
+
+    const { questionsIDS, user,authed } = this.props;
 
     const answeredIds = user ? Object.keys(user["answers"]) : [];
 
@@ -32,9 +34,11 @@ class Dashboard extends Component {
 
     const unansweredIds = user ? getUnanswered(questionsIDS, answeredIds) : [];
 
+    
     return (
       <div>
         <Navbar />
+        {authed === null ? (<LoginRedirect/>):(
         <div className="header">
           <button onClick={this.showAnswered} className="head btn ">
             UnAnswered
@@ -48,10 +52,11 @@ class Dashboard extends Component {
             <ListQuestions questionsIDS={answeredIds} />
           )}
         </div>
+        )}
       </div>
     );
-  }
-}
+  }}
+
 
 export default connect(mapStateToProps)(Dashboard);
 
