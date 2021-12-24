@@ -3,7 +3,7 @@ import getQuestions from "./getQuestions";
 import getUsers from "./getUsers";
 import authedUser from "./authedUser";
 
-const AUTHED_ID = "";
+const AUTHED_ID = "johndoe";
 
 export function handleInitialData() {
   return (dispatch) => {

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { formatQuestion } from "../_DATA";
 import { handleAnswer } from "../actions/answerQuestion";
 import { Navbar } from "./nav";
-import LoginRedirect from "./loginRedirect";
+
 export class Question extends Component {
 
 state={
@@ -31,7 +31,7 @@ state={
 
 
   render() {
-    const { question ,user,authed} = this.props;
+    const { question ,user} = this.props;
     const { author, optionOne, optionTwo } = question;
     const { avatarURL, name } = user;
 
@@ -40,7 +40,6 @@ state={
       <div>
 
       <Navbar/>
-      {authed === null ? (<LoginRedirect/>):(
       <div className="question">
       <img className="avatar" src={avatarURL} alt={`avatar of ${name}`} />
 
@@ -63,7 +62,7 @@ state={
           </form>
           <br></br>
         </div>
-      </div>)}
+      </div>
       </div>
     );
   }

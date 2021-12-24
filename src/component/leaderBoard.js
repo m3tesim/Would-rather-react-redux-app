@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Navbar } from "./nav";
-import LoginRedirect from "./loginRedirect";
+
 export class LeaderBoard extends Component {
   render() {
-    const { getUsers,authed } = this.props;
+    const { getUsers } = this.props;
 console.log(getUsers)
     function score(users) {
       const usersScore = Object.keys(users).map((id) => {
@@ -24,7 +24,6 @@ console.log(getUsers)
       <div>
 
       <Navbar/>
-      {authed === null ? (<LoginRedirect/>):(
       <div className="question">
         <ul>
           {leaders.map((user) => (
@@ -46,7 +45,7 @@ console.log(getUsers)
             </li>
           ))}
         </ul>
-      </div>)}
+      </div>
       </div>
       
     );
@@ -55,7 +54,7 @@ console.log(getUsers)
 
 export default connect(mapStateToProps)(LeaderBoard);
 
-function mapStateToProps({ getUsers,authed }) {
+function mapStateToProps({ getUsers }) {
   return {
     getUsers,
   };

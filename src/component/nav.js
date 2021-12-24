@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import authedUser from "../actions/authedUser";
+
 export class Navbar extends Component {
-
-
-  signOut=()=>{
-    const {dispatch}=this.props
-dispatch(authedUser(null))
-  }
   render() {
 
     const { avatarURL, name  } = this.props;
@@ -34,7 +28,7 @@ dispatch(authedUser(null))
           </li>
          
           <li >
-            <NavLink to='/' exact onClick={this.signOut}>
+            <NavLink to='/' exact="true"  onClick={this.signOut}>
               sign out
             </NavLink>
           </li>
@@ -59,7 +53,6 @@ const mapStateToProps = ({ authed,  getUsers }) => {
     const user = getUsers[authed];
   
     return {
-
         name: user ? user['name'] : '',
         avatarURL: user ? user['avatarURL'] : ''
     };
