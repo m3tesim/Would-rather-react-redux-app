@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import authedUser from "../actions/authedUser";
-import { Redirect } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 export class LoginTest extends Component {
 state={
-    user: 'none',
+    user: null,
     loggedIn: false
   }
 
@@ -26,10 +26,7 @@ handelLogin =(e)=>{
 
 
   render() {
-    if (this.state.user !=='none') {
-        return   <Redirect to={'/home'} />
-        
-      }
+    
 
     const { getUsers } = this.props;
 
@@ -44,6 +41,12 @@ handelLogin =(e)=>{
     }
 
     const users = loginUsers(getUsers);
+
+  
+
+    if (this.state.user) {
+      return <Navigate   to='/home' />
+    }
 
     return (
       <div>

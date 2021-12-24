@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../_DATA";
 import { handleAnswer } from "../actions/answerQuestion";
-import { Navbar } from "./nav";
+import NewNav from "./newNav";
+
+import LoginRedirect from "./loginRedirect";
+import { useParams } from "react-router-dom";
+
 
 export class Question extends Component {
 
@@ -31,7 +35,7 @@ state={
 
 
   render() {
-    const { question ,user} = this.props;
+    const { question ,user,authed} = this.props;
     const { author, optionOne, optionTwo } = question;
     const { avatarURL, name } = user;
 
@@ -39,7 +43,9 @@ state={
       
       <div>
 
-      <Navbar/>
+<NewNav/>
+
+      {authed === null ? (<LoginRedirect/>):(
       <div className="question">
       <img className="avatar" src={avatarURL} alt={`avatar of ${name}`} />
 
@@ -62,14 +68,14 @@ state={
           </form>
           <br></br>
         </div>
-      </div>
+      </div>)}
       </div>
     );
   }
 }
 
-const MapStateToProps = ({ authed, getQuestions ,getUsers},props) => {
-  const { id } = props.match.params;
+const MapStateToProps = ({ authed, getQuestions ,getUsers}) => {
+  const { id } =useParams()
 
   const question = getQuestions[id];
   const author = question.author;

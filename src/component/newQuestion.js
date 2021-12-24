@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddQ } from "../actions/addQuestion";
-import { Navbar } from "./nav";
+import NewNav from "./newNav";
+import { Navigate } from "react-router-dom";
 export class NewQuestion extends Component {
   state = {
     optionOne: "",
     optionTwo: "",
+    redirect:null
   };
 
   handleChange1 = (e) => {
@@ -22,70 +24,66 @@ export class NewQuestion extends Component {
     this.setState(() => ({
       optionTwo: option,
     }));
-
-
   };
 
   handleSubmit = (e) => {
-      e.preventDefault()
-      
+    e.preventDefault();
+
     const { optionOne, optionTwo } = this.state;
-    const {dispatch}=this.props
-    dispatch(handleAddQ(optionOne, optionTwo))
+    const { dispatch } = this.props;
+    dispatch(handleAddQ(optionOne, optionTwo));
 
     // add question to the state
-
 
     this.setState(() => ({
       OptionOne: "",
       optionTwo: "",
+      redirect:true
     }));
   };
 
   render() {
-
     const { optionOne, optionTwo } = this.state;
 
-
+    if (this.state.redirect) {
+      return <Navigate to="/home" />;
+    }
     return (
-      
       <div>
+        <NewNav/>
 
-      <Navbar/>
-      <div className="question ">
-        <form onSubmit={this.handleSubmit} className="question-info ">
-          <span>
-            {" "}
-            <h2> Create New Question </h2>
-          </span>
+        <div className="question ">
+          <form onSubmit={this.handleSubmit} className="question-info ">
+            <span>
+              {" "}
+              <h2> Create New Question </h2>
+            </span>
 
-          <h3>Would You Rather </h3>
-          <input
-            type="text"
-            value={optionOne}
+            <h3>Would You Rather </h3>
+            <input
+              type="text"
+              value={optionOne}
+              placeholder="option One"
+              onChange={this.handleChange1}
+              maxLength="50"
+            />
+            <h3>OR</h3>
+            <input
+              type="text"
+              value={optionTwo}
+              placeholder="option Tow"
+              onChange={this.handleChange2}
+              maxLength="50"
+            />
 
-            placeholder="option One"
-            onChange={this.handleChange1}
-            maxLength="50"
-          />
-          <h3>OR</h3>
-          <input
-            type="text"
-            value={optionTwo}
-            placeholder="option Tow"
-            onChange={this.handleChange2}
-
-            maxLength="50"
-          />
-
-          <button
-            className="btn"
-            type="submit"
-            disabled={(optionOne && optionTwo) === ""}>
-            Submit
-          </button>
-        </form>
-      </div>
+            <button
+              className="btn"
+              type="submit"
+              disabled={(optionOne && optionTwo) === ""}>
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

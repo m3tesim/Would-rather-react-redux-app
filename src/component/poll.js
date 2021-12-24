@@ -7,13 +7,12 @@ export class Poll extends Component {
 
 
   render() {
-    const { question, authed, user , id } = this.props;
+    const { question, user , id } = this.props;
 
     const { author, optionOne } = question;
     const { avatarURL, name } = user;
 
-    return authed !== author ? (
-      <div className="question">
+    return (      <div className="question">
         <img className="avatar" src={avatarURL} alt={`avatar of ${name}`} />
         <div className="question-info">
           by {author}
@@ -29,8 +28,8 @@ export class Poll extends Component {
           <br></br>
         </div>
       </div>
-    ) : (
-      ""
+    
+    
     );
   }
 }
