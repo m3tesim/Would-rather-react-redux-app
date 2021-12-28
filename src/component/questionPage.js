@@ -2,6 +2,8 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { handleAnswer } from "../actions/answerQuestion";
 import NewNav from "./newNav";
+import LoginRedirect from "./loginRedirect"
+import { Link } from "react-router-dom";
 class Question extends Component {
   state = {
     selected: "optionOne",
@@ -18,10 +20,11 @@ class Question extends Component {
     this.props.dispatch(handleAnswer({ authedUser: authed, qid, answer }));
   };
   render() {
-    const { name, avatarURL, optionOneText, optionTwoText } = this.props;
+    const {id,authed, name, avatarURL, optionOneText, optionTwoText } = this.props;
     return (
       <div>
         <NewNav />
+        {authed === null ? (<LoginRedirect/>): (
 
         <div className="question">
           <div className="question-info">
@@ -53,12 +56,14 @@ class Question extends Component {
               <label htmlFor="second">{optionTwoText}</label>
             </div>
             <div>
-              <button className="btn" onClick={this.handleVoting}>
+              <Link   to={`/Result/${id}`} ><button className="btn" onClick={this.handleVoting}>
                 Submit{" "}
               </button>
+              </Link>
             </div>
           </div>
-        </div>
+        </div>  
+          )}
       </div>
     );
   }

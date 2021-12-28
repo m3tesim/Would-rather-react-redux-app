@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
 import "./App.css";
 import Dashboard from "./component/Dashboard";
-import {  Switch, Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 import NewQuestion from "./component/newQuestion";
 import LeaderBoard from "./component/leaderBoard";
-import LoginTest from "./component/logintest";
+import Login from "./component/login";
 import Question from "./component/questionPage";
+import PollResult from "./component/pollResult";
 
 class App extends Component {
   componentDidMount() {
@@ -17,14 +18,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Route path="/" component={Login} />
 
+        <Route path="/home" component={Dashboard} />
+        <Route path="/Question/:id" component={Question} />
+        <Route path="/Result/:id" component={PollResult} />
 
-            <Route  path="/" component={LoginTest} />
-
-            <Route   path="/home" component={Dashboard} />
-            <Route path="/Question/:id" component={Question} />
-            <Route  path="/newquestion" component={NewQuestion} />
-            <Route  path="/leaderboard" component={LeaderBoard} />
+        <Route path="/newquestion" component={NewQuestion} />
+        <Route path="/leaderboard" component={LeaderBoard} />
       </div>
     );
   }

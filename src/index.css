@@ -122,10 +122,7 @@ li {
   font-size: 18px;
   margin: 10px 0;
 }
-.tweet-icons {
-  display: flex;
-  align-items: center;
-}
+
 .user-avatar {
   color: #969696;
   margin: 0 15px 0 5px;
@@ -133,14 +130,8 @@ li {
   display: flex;
   align-items: flex-end;
 }
-.tweet-icon {
-  font-size: 27px;
-  color: #697784;
-}
-.tweet-icon:hover {
-  color: #00b5d6;
-  cursor: pointer;
-}
+
+
 
 
 
@@ -161,7 +152,7 @@ li {
   height: 100px;
 }
 
-.tweet-length {
+.result {
   text-align: right;
   margin-top: 10px;
   font-size: 20px;

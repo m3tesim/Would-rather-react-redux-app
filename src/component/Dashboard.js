@@ -23,7 +23,6 @@ class Dashboard extends Component {
   
 
     const { questionsIDS, user,authed } = this.props;
-    console.log("this is the aother from dashboar   "+authed)
 
     const answeredIds = user ? Object.keys(user["answers"]) : [];
 

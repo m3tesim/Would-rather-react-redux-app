@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import authedUser from "../actions/authedUser";
 import { Redirect } from "react-router-dom";
 
-export class LoginTest extends Component {
+export class Login extends Component {
 state={
     user: null,
     loggedIn: false
@@ -75,7 +75,7 @@ handelLogin =(e)=>{
   }
 }
 
-export default connect(mapStateToProps)(LoginTest);
+export default connect(mapStateToProps)(Login);
 
 function mapStateToProps({ getUsers }) {
   return {
