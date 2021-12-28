@@ -1,35 +1,40 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../_DATA";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export class Poll extends Component {
-
-
   render() {
-    const { question, user , id } = this.props;
+    const { question, user, id } = this.props;
 
     const { author, optionOne } = question;
     const { avatarURL, name } = user;
 
-    return (      <div className="question">
+    return (
+      <div className="question">
         <img className="avatar" src={avatarURL} alt={`avatar of ${name}`} />
         <div className="question-info">
           by {author}
           <form>
             <header>
-              <h4> Would you rather </h4>{" "}
+              <h4> Would you rather </h4>
             </header>
             <label>{optionOne.text},,,</label>
             <br />
             <br />
-            <Link className="btn"   to={`/Question/${id}`} > View poll </Link>
+            {Object.keys(user.answers).includes(id) ? (
+              <Link className="btn" to={`/Result/${id}`}>
+                View poll
+              </Link>
+            ) : (
+              <Link className="btn" to={`/Question/${id}`}>
+                View poll
+              </Link>
+            )}
           </form>
           <br></br>
         </div>
       </div>
-    
-    
     );
   }
 }

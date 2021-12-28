@@ -9,8 +9,6 @@ class NewNav extends Component {
   };
 
   render() {
-    const { authed } = this.props;
-    console.log("this is the aother from dashboar   " + authed);
 
     const { avatarURL, name } = this.props;
 
