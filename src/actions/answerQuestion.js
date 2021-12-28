@@ -3,20 +3,20 @@ import { _saveQuestionAnswer } from "../_DATA";
 export const ANSWER_Q = "answer_q";
 export const USER_ANSWER="user_answer"
 
-function Answer({ authed, qid, answer }) {
+function Answer({ authedUser, qid, answer }) {
   return {
     type: ANSWER_Q,
 
-    authed,
+    authed:authedUser,
     qid,
     answer,
   };
 }
 
-function userAnswer(authed, qid, answer) {
+function userAnswer({authedUser, qid, answer}) {
     return {
       type: USER_ANSWER,
-      authed,
+      authed:authedUser,
       qid,
       answer
     };

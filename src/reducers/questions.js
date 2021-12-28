@@ -17,17 +17,18 @@ export function getQuestions(state = {}, action) {
         };
 
         case ANSWER_Q :
-  
+          const { qid, authed, answer } = action
+          const selected = answer === 'optionOne' ? 'optionOne': 'optionTwo'
           return {
             ...state,
-            [action.qid]:{
-            ...state[action.qid],
-
-            [action.answer]:{
-              ...state[action.qid][action.answer],
-             votes: [action.qid][action.answer].votes.cocat(action.author)}
-          }};
-
+            [qid]: {
+              ...state[qid],
+              [selected]: {
+                ...state[qid][selected],
+                votes: state[qid][selected].votes.concat([authed])
+              }
+            }
+          }
     default:
       return state;
   }

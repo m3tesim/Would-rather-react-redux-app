@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddQ } from "../actions/addQuestion";
 import NewNav from "./newNav";
-import { Navigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 export class NewQuestion extends Component {
   state = {
     optionOne: "",
@@ -46,7 +46,7 @@ export class NewQuestion extends Component {
     const { optionOne, optionTwo } = this.state;
 
     if (this.state.redirect) {
-      return <Navigate to="/home" />;
+      return <Redirect to="/home" />;
     }
     return (
       <div>

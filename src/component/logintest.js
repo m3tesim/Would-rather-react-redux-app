@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import authedUser from "../actions/authedUser";
-import { Navigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 export class LoginTest extends Component {
 state={
@@ -45,7 +45,7 @@ handelLogin =(e)=>{
   
 
     if (this.state.user) {
-      return <Navigate   to='/home' />
+      return <Redirect   to='/home' />
     }
 
     return (
