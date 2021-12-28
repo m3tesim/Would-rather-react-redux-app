@@ -14,6 +14,7 @@ class PollRessult extends Component {
       optionTwoText,
       optionOneVotes,
       optionTwoVotes,
+      optionOne, optionTwo
     } = this.props;
     const totalVotes=optionOneVotes+optionTwoVotes
 
@@ -22,6 +23,7 @@ class PollRessult extends Component {
     };
 
     console.log("Loook here" + optionOneVotes + "yet" + optionTwoVotes);
+    let className;
     return (
       <div>
         <NewNav />
@@ -42,13 +44,17 @@ class PollRessult extends Component {
               <h2>Would you rather...</h2>
               <div className="question">
                 <div  className="question-info" htmlFor="first">{optionOneText}
-                <div> {optionOneVotes} vote  {percentage(optionOneVotes,totalVotes)}%</div>
+                
+                { optionOne.votes.includes(authed)? className='voted' :className='notVoted'}
+                <div className={className}> {optionOneVotes} vote  {percentage(optionOneVotes,totalVotes)}%</div>
 
                 </div>
               </div>
               <div className="question">
                 <div className="question-info" htmlFor="second">{optionTwoText}
-                <div  > {optionTwoVotes} vote   {percentage(optionTwoVotes,totalVotes)}%</div>
+                { optionTwo.votes.includes(authed)? className='voted' :className='notVoted'}
+
+                <div className={className} > {optionTwoVotes} vote   {percentage(optionTwoVotes,totalVotes)}%</div>
                 </div>
               </div>
             </div>
@@ -78,6 +84,7 @@ function MapStateToProps({ authed, getUsers, getQuestions }, props) {
     authed,
     optionOneVotes,
     optionTwoVotes,
+    optionOne, optionTwo
   };
 }
 

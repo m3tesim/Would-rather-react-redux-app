@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 
 export class Poll extends Component {
   render() {
-    const { question, user, id } = this.props;
+    const {authedUser, question, user, id } = this.props;
 
     const { author, optionOne } = question;
     const { avatarURL, name } = user;
+
+    console.log("user answered question  "+Object.keys(authedUser['answers']))
 
     return (
       <div className="question">
@@ -22,7 +24,7 @@ export class Poll extends Component {
             <label>{optionOne.text},,,</label>
             <br />
             <br />
-            {Object.keys(user.answers).includes(id) ? (
+            {Object.keys(authedUser.answers).includes(id) ? (
               <Link className="btn" to={`/Result/${id}`}>
                 View poll
               </Link>
@@ -45,10 +47,11 @@ const mapStateToProps = ({ authed, getQuestions, getUsers }, { id }) => {
   const optionOneText = question.optionOne.text;
   const optionTwoText = question.optionTwo.text;
   const user = getUsers[author];
-
+const authedUser=getUsers[authed]
   return {
+    id,
     user,
-    authed,
+    authedUser,
     question: formatQuestion({ optionOneText, optionTwoText, author }),
   };
 };
