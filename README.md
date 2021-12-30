@@ -1,7 +1,6 @@
-# Getting Started with Create React App
+# Would you rather (app powered by React and redux)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+this is the socend project from nanodegree cource by udacity ,it about a game where users can choose between teo option , create questions and compete between them 
 ## Available Scripts
 
 In the project directory, you can run:
