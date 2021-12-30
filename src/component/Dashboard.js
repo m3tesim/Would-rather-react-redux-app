@@ -20,9 +20,7 @@ class Dashboard extends Component {
   };
 
   render() {
-  
-
-    const { questionsIDS, user,authed } = this.props;
+    const { questionsIDS, user, authed } = this.props;
 
     const answeredIds = user ? Object.keys(user["answers"]) : [];
 
@@ -34,30 +32,34 @@ class Dashboard extends Component {
 
     const unansweredIds = user ? getUnanswered(questionsIDS, answeredIds) : [];
 
-
     return (
       <div>
-             <NewNav/>
-        {authed === null ? (<LoginRedirect/>): (
-         
-        <div className="header">
-          <button onClick={this.showAnswered} className="head btn ">
-            UnAnswered
-          </button>
-          <button onClick={this.showUnAnswered} className="head btn">
-            Answered
-          </button>
-          {this.state.value === true ? (
-            <ListQuestions questionsIDS={unansweredIds} />
-          ) : (
-            <ListQuestions questionsIDS={answeredIds} />
-          )}
-        </div>
+        {authed === null ? (
+          <LoginRedirect />
+        ) : (
+          <div className="header">
+            <NewNav />
+            <div className="dashboard">
+              <div>
+              <button onClick={this.showAnswered} className=" btn  ">
+                UnAnswered
+              </button>
+              <button onClick={this.showUnAnswered} className=" btn">
+                Answered
+              </button>
+              </div>
+              {this.state.value === true ? (
+                <ListQuestions questionsIDS={unansweredIds} />
+              ) : (
+                <ListQuestions questionsIDS={answeredIds} />
+              )}
+            </div>
+          </div>
         )}
       </div>
     );
-  }}
-
+  }
+}
 
 export default connect(mapStateToProps)(Dashboard);
 
@@ -67,7 +69,6 @@ function mapStateToProps({ getQuestions, authed, getUsers }) {
   return {
     authed,
     user,
-    
 
     questionsIDS: Object.keys(getQuestions).sort(
       (a, b) => getQuestions[b].timestamp - getQuestions[a].timestamp

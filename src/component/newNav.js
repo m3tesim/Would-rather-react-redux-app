@@ -26,7 +26,7 @@ class NewNav extends Component {
           </li>
 
           <li>
-            <NavLink to="/" onClick={this.signOut}>
+            <NavLink  exact to="/"  onClick={this.signOut}>
               sign out
             </NavLink>
           </li>

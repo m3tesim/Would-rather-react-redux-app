@@ -32,6 +32,7 @@ class PollRessult extends Component {
         ) : (
           <div className="question">
             <div className="question-info">
+              <br></br>
               <div>By {name} </div>
 
               <img
@@ -57,6 +58,8 @@ class PollRessult extends Component {
                 <div className={className} > {optionTwoVotes} vote   {percentage(optionTwoVotes,totalVotes)}%</div>
                 </div>
               </div>
+              <br/>
+
             </div>
           </div>
         )}

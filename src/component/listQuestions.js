@@ -7,7 +7,7 @@ export class ListQuestions extends Component {
 const {questionsIDS}= this.props
 
     return (
-      <div className="container">
+      <div >
 
         <ul>
             

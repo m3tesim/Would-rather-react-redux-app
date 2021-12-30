@@ -1,14 +1,12 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-   
 body {
   margin: 0;
   padding: 0;
@@ -30,7 +28,7 @@ a {
   text-transform: uppercase;
   margin: 35px auto;
   padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
+  border: 1px solid rgba(0, 0, 0, 0.29);
   cursor: pointer;
   background: #fff;
   font-size: 16px;
@@ -39,7 +37,7 @@ a {
 }
 
 .btn:hover {
-  border-color: rgba(0,0,0,.5);
+  border-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
 
@@ -57,7 +55,7 @@ a {
   font-weight: bold;
 }
 
-.nav-bar{
+.nav-bar {
   display: flex;
   justify-content: center;
 }
@@ -67,8 +65,6 @@ a {
   justify-content: flex-start;
   text-decoration: none;
 }
-
-
 
 li {
   list-style-type: none;
@@ -87,6 +83,19 @@ li {
   border-radius: 25px;
 }
 
+.poll {
+  width: 100%;
+  max-width: 590px;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+  justify-content: space-evenly;
+  
+}
+
 .question {
   width: 100%;
   max-width: 590px;
@@ -96,31 +105,33 @@ li {
   border: 1px solid #dad7d7;
   border-radius: 3px;
   cursor: pointer;
+  justify-content: center;
+}
+.new-question {
+  width: 100%;
+  max-width: 590px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .question-info {
   margin: 10px;
   display: flex;
   flex-direction: column;
-  align-items:left ;
+  align-items: left;
+}
+
+.leader-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 /* Hacky but less typing in the video */
-.question-info> div > span:first-child {
+.question-info > div > span:first-child {
   font-weight: bold;
   margin-right: 5px;
-}
-.question-info > div > span:nth-child(2) {
-  color: #969696;
-  font-size: 16px;
-}
-.question-info > div > div {
-  color: #969696;
-  font-size: 15px;
-}
-.question-info > div > p {
-  font-size: 18px;
-  margin: 10px 0;
 }
 
 .user-avatar {
@@ -131,12 +142,7 @@ li {
   align-items: flex-end;
 }
 
-
-
-
-
-
-.new-tweet {
+.dashboard {
   width: 100%;
   max-width: 590px;
   margin: 0 auto;
@@ -144,29 +150,30 @@ li {
   flex-direction: column;
 }
 
-.textarea {
+
+
+.score {
   border-radius: 4px;
-  border: 1px solid #dad7d7;
+  background-color: steelblue;
+  font-weight: bold;
+
   padding: 10px;
+  color: whitesmoke;
   font-size: 15px;
-  height: 100px;
+  height: 35px;
+  margin-top: 60px;
 }
 
 .result {
   text-align: right;
   margin-top: 10px;
   font-size: 20px;
-  color: #C3392A;
+  color: #c3392a;
 }
 
 .voted {
   font-size: 20px;
   background-color: cadetblue;
-
 }
 
-
 /*  new cssssssss    */
-
-
-

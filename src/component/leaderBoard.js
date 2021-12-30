@@ -4,8 +4,8 @@ import NewNav from "./newNav";
 import LoginRedirect from "./loginRedirect";
 export class LeaderBoard extends Component {
   render() {
-    const { getUsers,authed } = this.props;
-console.log(getUsers)
+    const { getUsers, authed } = this.props;
+    console.log(getUsers);
     function score(users) {
       const usersScore = Object.keys(users).map((id) => {
         let user = users[id];
@@ -20,43 +20,63 @@ console.log(getUsers)
     const leaders = score(getUsers);
 
     return (
-
       <div>
+        {authed === null ? (
+          <LoginRedirect />
+        ) : (
+          <div>
+            <NewNav />
 
-<NewNav/>
-      {authed === null ? (<LoginRedirect/>):(
-      <div className="question">
-        <ul>
-          {leaders.map((user) => (
-            <li key={user.id}>
-              <img
-                className="avatar"
-                src={user.avatarURL}
-                alt={`avatar of ${user.name}`}
-              />
-              <div className="question-info">
-                {user.name}
-                <div>Created Questions: {user.questions.length}</div>
-                <div>
-                  Answered Questions: {Object.keys(user.answers).length}
-                </div>
+            <div className="question">
+              <ul>
+                {leaders.map((user) => (
+                  <li key={user.id}>
+                    <div className="leader-board">
+                      <div>
+                        <img
+                          className="avatar"
+                          src={user.avatarURL}
+                          alt={`avatar of ${user.name}`}
+                        />
+                      </div>
+                      <div className="question-info">
+                        <br />
+                        <br></br>
 
-                <div>Score : {user.score}</div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>)}
+                        <div>
+                          <span> {user.name} </span>{" "}
+                        </div>
+                        <div>Created Questions: {user.questions.length}</div>
+                        <div>
+                          Answered Questions: {Object.keys(user.answers).length}
+                        </div>
+
+                      </div>
+
+
+                      <div className="score">Score 
+                      
+                      <div>{user.score}</div>
+                       </div>
+
+                    </div>
+                    <hr/>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
-      
     );
   }
 }
 
 export default connect(mapStateToProps)(LeaderBoard);
 
-function mapStateToProps({ getUsers,authed }) {
+function mapStateToProps({ getUsers, authed }) {
   return {
     getUsers,
+    authed,
   };
 }
