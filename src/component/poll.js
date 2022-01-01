@@ -32,7 +32,7 @@ export class Poll extends Component {
                   View poll
                 </Link>
               ) : (
-                <Link className="btn" to={`/Question/${id}`}>
+                <Link className="btn" to={`/questions/${id}`}>
                   View poll
                 </Link>
               )}
@@ -44,7 +44,7 @@ export class Poll extends Component {
   }
 }
 
-const mapStateToProps = ({ authed, getQuestions, getUsers }, { id }) => {
+function mapStateToProps ({ authed, getQuestions, getUsers }, { id }) {
   const question = getQuestions[id];
   const author = question.author;
   const optionOneText = question.optionOne.text;

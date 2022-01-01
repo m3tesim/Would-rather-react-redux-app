@@ -19,7 +19,7 @@ class NewNav extends Component {
             <NavLink to="/home">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/newQuestion">New Question</NavLink>
+            <NavLink to="/add">New Question</NavLink>
           </li>
           <li>
             <NavLink to="/leaderboard">Leaderboard</NavLink>
