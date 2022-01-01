@@ -7,6 +7,7 @@ class PollRessult extends Component {
 
   render() {
     const {
+      id,
       authed,
       name,
       avatarURL,
@@ -23,12 +24,12 @@ class PollRessult extends Component {
     };
 
     let className;
+    if (authed === null ){return <LoginRedirect from={`/Result/${id}`}/>}
+
     return (
       <div>
         <NewNav />
-        {authed === null ? (
-          <LoginRedirect />
-        ) : (
+     
           <div className="question">
             <div className="question-info">
               <br></br>
@@ -61,7 +62,6 @@ class PollRessult extends Component {
 
             </div>
           </div>
-        )}
       </div>
     );
   }

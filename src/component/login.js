@@ -42,10 +42,17 @@ handelLogin =(e)=>{
 
     const users = loginUsers(getUsers);
 
-  
 
+
+    let from = '/home';
+    if (this.props.location.state) {
+      from = this.props.location.state.from;
+      console.log("heeeer"+from)
+    }
+
+  
     if (this.state.user) {
-      return <Redirect   to='/home' />
+      return <Redirect   to={from} />
     }
 
     return (

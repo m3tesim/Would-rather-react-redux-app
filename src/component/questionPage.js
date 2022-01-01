@@ -21,10 +21,11 @@ class Question extends Component {
   };
   render() {
     const {id,authed, name, avatarURL, optionOneText, optionTwoText } = this.props;
+    if (authed === null ){return <LoginRedirect from={`/questions/${id}`}/>}
+
     return (
       <div>
         <NewNav />
-        {authed === null ? (<LoginRedirect/>): (
 
         <div className="question">
           <div className="question-info">
@@ -63,7 +64,7 @@ class Question extends Component {
             </div>
           </div>
         </div>  
-          )}
+        
       </div>
     );
   }

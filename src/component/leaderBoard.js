@@ -18,12 +18,12 @@ export class LeaderBoard extends Component {
     }
 
     const leaders = score(getUsers);
+    
+    if (authed === null ){return <LoginRedirect from='/leaderboard'/>}
 
     return (
       <div>
-        {authed === null ? (
-          <LoginRedirect />
-        ) : (
+     
           <div>
             <NewNav />
 
@@ -66,7 +66,7 @@ export class LeaderBoard extends Component {
               </ul>
             </div>
           </div>
-        )}
+      
       </div>
     );
   }

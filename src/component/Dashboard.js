@@ -20,7 +20,12 @@ class Dashboard extends Component {
   };
 
   render() {
+
+
+
     const { getQuestions, questionsIDS, user, authed } = this.props;
+    if (authed === null ){return <LoginRedirect from='/home'/>}
+
 
     const answeredIds =  Object.keys(user["answers"]).sort(
       (a, b) => getQuestions[b].timestamp - getQuestions[a].timestamp ) ;
@@ -41,9 +46,7 @@ class Dashboard extends Component {
 
     return (
       <div>
-        {authed === null ? (
-          <LoginRedirect />
-        ) : (
+          
           <div className="header">
             <NewNav />
             <div className="dashboard">
@@ -62,7 +65,6 @@ class Dashboard extends Component {
               )}
             </div>
           </div>
-        )}
       </div>
     );
   }

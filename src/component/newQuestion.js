@@ -49,15 +49,15 @@ export class NewQuestion extends Component {
   render() {
     const { optionOne, optionTwo } = this.state;
     const {authed}=this.props
+    if (authed === null ){return <LoginRedirect from='/add'/>}
 
     if (this.state.toDashboard) {
       return <Redirect to={'/home' } />
     }
+
     return (
       <div>
-        {authed === null ? (
-          <LoginRedirect />
-        ) : (
+       
           <div>
             <NewNav />
 
@@ -95,7 +95,7 @@ export class NewQuestion extends Component {
               </div>
             </div>
           </div>
-        )}
+      
       </div>
     );
   }
