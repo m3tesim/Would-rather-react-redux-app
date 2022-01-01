@@ -22,7 +22,6 @@ class PollRessult extends Component {
       return ((100 * partialValue) / totalValue).toFixed();
     };
 
-    console.log("Loook here" + optionOneVotes + "yet" + optionTwoVotes);
     let className;
     return (
       <div>
@@ -44,18 +43,18 @@ class PollRessult extends Component {
             <div>
               <h2>Would you rather...</h2>
               <div className="question">
-                <div  className="question-info" htmlFor="first">{optionOneText}
+                <div  className="question-info" htmlFor="first">{optionOneText}   <></>
                 
-                { optionOne.votes.includes(authed)? className='voted' :className='notVoted'}
+                { optionOne.votes.includes(authed)? className='voted' : className='notVoted'}
                 <div className={className}> {optionOneVotes} vote  {percentage(optionOneVotes,totalVotes)}%</div>
 
                 </div>
               </div>
               <div className="question">
-                <div className="question-info" htmlFor="second">{optionTwoText}
-                { optionTwo.votes.includes(authed)? className='voted' :className='notVoted'}
+                <div className="question-info" htmlFor="second">{optionTwoText}  <></>
+                { optionTwo.votes.includes(authed)? className='voted' : className='notVoted'}
 
-                <div className={className} > {optionTwoVotes} vote   {percentage(optionTwoVotes,totalVotes)}%</div>
+                <div className={className} > {optionTwoVotes}  vote   {percentage(optionTwoVotes,totalVotes)}%</div>
                 </div>
               </div>
               <br/>

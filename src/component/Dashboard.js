@@ -20,17 +20,24 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { questionsIDS, user, authed } = this.props;
+    const { getQuestions, questionsIDS, user, authed } = this.props;
 
-    const answeredIds = user ? Object.keys(user["answers"]) : [];
+    const answeredIds =  Object.keys(user["answers"]).sort(
+      (a, b) => getQuestions[b].timestamp - getQuestions[a].timestamp ) ;
+ 
 
     function getUnanswered(questionIds, answeredIds) {
       return questionIds.filter(
         (questionId) => !answeredIds.includes(questionId)
-      );
+
+      )  
+
+      ;
     }
 
     const unansweredIds = user ? getUnanswered(questionsIDS, answeredIds) : [];
+
+
 
     return (
       <div>
@@ -69,6 +76,7 @@ function mapStateToProps({ getQuestions, authed, getUsers }) {
   return {
     authed,
     user,
+    getQuestions,
 
     questionsIDS: Object.keys(getQuestions).sort(
       (a, b) => getQuestions[b].timestamp - getQuestions[a].timestamp

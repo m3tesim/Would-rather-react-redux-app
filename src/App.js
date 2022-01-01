@@ -28,7 +28,7 @@ class App extends Component {
 
         <Route path="/add" component={NewQuestion} />
         <Route path="/leaderboard" component={LeaderBoard} />
-        <Route   component={NotFound}/>
+        <Route   path='*' component={NotFound}/>
         </Switch>
       </div>
     );
