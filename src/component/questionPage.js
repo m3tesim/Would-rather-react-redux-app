@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { handleAnswer } from "../actions/answerQuestion";
 import NewNav from "./newNav";
 import LoginRedirect from "./loginRedirect"
-import { Link } from "react-router-dom";
+import { Link ,Redirect} from "react-router-dom";
+import NotFound from "./NotFound";
 class Question extends Component {
   state = {
     selected: "optionOne",
@@ -20,7 +21,14 @@ class Question extends Component {
     this.props.dispatch(handleAnswer({ authedUser: authed, qid, answer }));
   };
   render() {
+
+    if(this.props.error) {
+      return <NotFound/>;
+
+  }
+
     const {id,authed, name, avatarURL, optionOneText, optionTwoText } = this.props;
+
     if (authed === null ){return <LoginRedirect from={`/questions/${id}`}/>}
 
     return (
@@ -71,7 +79,15 @@ class Question extends Component {
 }
 
 function MapStateToProps({ authed, getUsers, getQuestions }, props) {
+
   const { id } = props.match.params;
+  if(getQuestions[id] === undefined) {
+    const error = true;
+    return {
+        error
+    }
+}
+
 
   const { author, optionOne, optionTwo } = getQuestions[id];
   const { name, avatarURL } = getUsers[author];

@@ -17,8 +17,6 @@ class App extends Component {
   }
 
   render() {
-    const authedUser= this.props.authed
-    console.log(authedUser)
    
 
     return (
@@ -27,15 +25,15 @@ class App extends Component {
           <Route exact path="/" component={Login} />
 
           <Route path="/home" component={Dashboard} />
-        
 
           <Route path="/questions/:id" component={Question} />
           <Route path="/Result/:id" component={PollResult} />
 
           <Route path="/add" component={NewQuestion} />
           <Route path="/leaderboard" component={LeaderBoard} />
+          <Route path="/404" component={NotFound} />
 
-          <Route path="*" component={NotFound} />
+          <Route  component={NotFound} />
         </Switch>
       </div>
     );

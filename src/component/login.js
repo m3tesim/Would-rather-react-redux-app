@@ -47,7 +47,6 @@ handelLogin =(e)=>{
     let from = '/home';
     if (this.props.location.state) {
       from = this.props.location.state.from;
-      console.log("heeeer"+from)
     }
 
   

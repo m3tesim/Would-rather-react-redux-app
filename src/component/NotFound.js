@@ -18,11 +18,8 @@ class NotFound extends Component {
 
     return (
       <div>
-        {authed === null ? (
-          <LoginRedirect />
-        ) : (
+     
           <div className="header">
-            <NewNav />
             <div className="dashboard">
               <h1>Page not found</h1>
               <h2>404</h2>
@@ -30,7 +27,7 @@ class NotFound extends Component {
               <Link className="btn" to='/home'>Go to the Dashboard</Link>
             </div>
           </div>
-        )}
+        
       </div>
     );
   }

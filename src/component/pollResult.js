@@ -2,10 +2,16 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import NewNav from "./newNav";
 import LoginRedirect from "./loginRedirect";
+import NotFound from "./NotFound";
 class PollRessult extends Component {
   state = {};
 
   render() {
+
+    if(this.props.error) {
+      return <NotFound/>;
+
+  }
     const {
       id,
       authed,
@@ -69,6 +75,12 @@ class PollRessult extends Component {
 
 function MapStateToProps({ authed, getUsers, getQuestions }, props) {
   const { id } = props.match.params;
+  if(getQuestions[id] === undefined) {
+    const error = true;
+    return {
+        error
+    }
+}
 
   const { author, optionOne, optionTwo } = getQuestions[id];
   const { name, avatarURL } = getUsers[author];
