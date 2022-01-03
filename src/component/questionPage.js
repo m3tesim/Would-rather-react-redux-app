@@ -23,7 +23,7 @@ class Question extends Component {
   render() {
 
     if(this.props.error) {
-      return <NotFound/>;
+      return <LoginRedirect from={`/404}`}/>;
 
   }
 
