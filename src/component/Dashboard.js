@@ -8,16 +8,12 @@ class Dashboard extends Component {
     value: true,
   };
 
-  showAnswered = () => {
+  showAnswers = () => {
     this.setState({
-      value: true,
+      value: !this.state.value
     });
   };
-  showUnAnswered = () => {
-    this.setState({
-      value: false,
-    });
-  };
+ 
 
   render() {
 
@@ -49,13 +45,14 @@ class Dashboard extends Component {
           
           <div className="header">
             <NewNav />
+
             <div className="dashboard">
-              <div>
-              <button onClick={this.showAnswered} className=" btn  ">
-                UnAnswered
+              <div className="center" >
+              <button onClick={this.showAnswers} className={`tab  ${this.state.value===true && "active"}  `} >
+                UnAnswered Questions
               </button>
-              <button onClick={this.showUnAnswered} className=" btn">
-                Answered
+              <button onClick={this.showAnswers} className={`tab  ${this.state.value===false && "active"}  `}>
+                Answered Questions
               </button>
               </div>
               {this.state.value === true ? (

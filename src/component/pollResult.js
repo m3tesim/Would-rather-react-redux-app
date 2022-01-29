@@ -2,7 +2,6 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import NewNav from "./newNav";
 import LoginRedirect from "./loginRedirect";
-import NotFound from "./NotFound";
 class PollRessult extends Component {
   state = {};
 

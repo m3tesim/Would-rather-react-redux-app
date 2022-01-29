@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { handleAnswer } from "../actions/answerQuestion";
 import NewNav from "./newNav";
 import LoginRedirect from "./loginRedirect"
-import { Link ,Redirect} from "react-router-dom";
-import NotFound from "./NotFound";
+import { Link } from "react-router-dom";
 class Question extends Component {
   state = {
     selected: "optionOne",
