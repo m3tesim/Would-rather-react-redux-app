@@ -1,8 +1,6 @@
 import { Component, React } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import LoginRedirect from "./loginRedirect";
-import NewNav from "./newNav";
 
 
 
@@ -10,7 +8,6 @@ class NotFound extends Component {
 
 
   render() {
-    const {  authed } = this.props;
 
 
     
