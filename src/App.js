@@ -10,7 +10,8 @@ import Login from "./component/login";
 import Question from "./component/questionPage";
 import PollResult from "./component/pollResult";
 import NotFound from "./component/NotFound";
-import { Redirect ,useLocation} from "react-router-dom";
+
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
