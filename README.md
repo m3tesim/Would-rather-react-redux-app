@@ -1,9 +1,14 @@
 # Would you rather (app powered by React and redux)
 
-this is the socend project from nanodegree cource by udacity ,it about a game where users can choose between two option , create questions and compete between them 
+this project is about a simple Questions game where users can choose between two option , create questions and compete between them in the leaderBoard page you can live preview the project at [https://would-rather-react-redux-app.vercel.app/]
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+install the dependencies
 
 ### `npm start`
 
@@ -13,10 +18,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
