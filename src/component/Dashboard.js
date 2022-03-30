@@ -47,7 +47,7 @@ class Dashboard extends Component {
             <NewNav />
 
             <div className="dashboard">
-              <div className="center" >
+              <div className="center"  id="question-tab">
               <button onClick={this.showAnswers} className={`tab  ${this.state.value===true && "active"}  `} >
                 UnAnswered Questions
               </button>

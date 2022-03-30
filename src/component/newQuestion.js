@@ -73,6 +73,8 @@ export class NewQuestion extends Component {
 
                 <h3>Would You Rather </h3>
                 <input
+               className="input"
+
                   type="text"
                   value={optionOne}
                   placeholder="option One"
@@ -83,7 +85,9 @@ export class NewQuestion extends Component {
                   <span className="result"> max Characters reached</span>
                 )}
                 <h3>OR</h3>
+
                 <input
+                className="input"
                   type="text"
                   value={optionTwo}
                   placeholder="option Two"
@@ -93,7 +97,7 @@ export class NewQuestion extends Component {
                 {optionTwo.length === maxCharacters && (
                   <span className="result"> max Characters reached</span>
                 )}
-
+<br/>
                 <button
 
                   className="btn"
@@ -101,11 +105,13 @@ export class NewQuestion extends Component {
                   disabled={(optionOne === ""&& optionTwo === "")}>
                   Submit
                 </button>
+                <br/>
                 {this.state.validate ? (
                   <div className="result center"> please enter defferent options </div>
                 ) : (
                   ""
                 )}
+                <br/>
               </form>
             </div>
           </div>

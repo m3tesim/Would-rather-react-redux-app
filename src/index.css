@@ -37,15 +37,7 @@ a {
   position: relative;
 }
 
-.tab {
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.29);
-  cursor: pointer;
-  background: #fff;
-  font-size: 16px;
-  width: 250px;
-  position: relative;
-}
+
 
 .btn:hover {
   border-color: rgba(0, 0, 0, 0.5);
@@ -63,8 +55,30 @@ a {
   
 }
 
+#question-tab{
+  width :100%;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  left:2em;
+}
+
 .active {
   font-weight: bold;
+  color:rgb(108, 154, 255);
+}
+
+
+.tab {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+  width: 50%;
+}
+.input{
+  height: 2em;
 }
 
 .nav-bar {
